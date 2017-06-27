@@ -39,29 +39,24 @@ describe("Helper Functions", function() {
   })
 
   describe("romanNumerals(string)", function(){
-    it("checks that MDCXLIII equals 1643", function(){
-      assert.equal(helpers.romanNumerals("MDCXLIII"), 1643)
-    })
-    it("checks that MCMLXIX equals 1969", function(){
-      assert.equal(helpers.romanNumerals("MCMLXIX"), 1969)
-    })
-    it("checks that VXI is not valid", function(){
-      assert.equal(helpers.romanNumerals("VXI"), "VXI is not valid")
-    })
-    it("checks that XXXX is not valid", function(){
-      assert.equal(helpers.romanNumerals("XXXX"), "XXXX is not valid")
-    })
-    it("checks that IIXV is not valid", function(){
-      assert.equal(helpers.romanNumerals("IIXV"), "IIXV is not valid")
-    })
-    it("checks that XCIX equals 99", function(){
-      assert.equal(helpers.romanNumerals("XCIX"), 99)
-    })
-    it("checks that IC is not valid", function(){
-      assert.equal(helpers.romanNumerals("IC"), "IC is not valid")
-    })
-    it("checks that F is not valid", function(){
-      assert.equal(helpers.romanNumerals("IF"), "IF is not valid")
+
+    var cases = [
+      {string:"MDCXLIII", answer:1643},
+      {string:"MCMLXIX", answer:1969},
+      {string:"VXI", answer:"VXI is not valid"},
+      {string:"XXXX", answer:"XXXX is not valid"},
+      {string:"IIXV", answer:"IIXV is not valid"},
+      {string:"XCIX", answer:99},
+      {string:"IC", answer:"IC is not valid"},
+      {string:"IF", answer:"IF is not valid"}
+    ]
+
+    cases.forEach(function(test) {
+
+      it("checks that " + test.string + " equals " + test.answer, function(){
+        var answer = helpers.romanNumerals(test.string)
+        assert.equal(answer, test.answer)
+      })
     })
   })
 })
